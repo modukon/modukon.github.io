@@ -57,6 +57,15 @@
 	divTimestamp.innerHTML = new Date(startTimeMs).toString();
 	document.body.append(divTimestamp);
 	
+	document.body.append(document.createElement("br"));
+	document.body.append(document.createElement("br"));
+	document.body.append(document.createElement("br"));
+	
+	let divGameUrl = document.createElement("div");
+	divGameUrl.style.fontSize = "30px";
+	divGameUrl.innerHTML = 'Play the game at <a style="color:#4FA;" href="https://game.dfdao.xyz/">game.dfdao.xyz</a>';
+	document.body.append(divGameUrl);
+	
 	setInterval(()=>{
 		divCountdown.innerHTML = getStrTimeUntilRoundStarts();
 	}, 1000);
