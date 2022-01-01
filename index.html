@@ -47,6 +47,7 @@
 	
 	let divCountdown = document.createElement("div");
 	divCountdown.style.fontSize = "100px";
+	divCountdown.innerHTML = getStrTimeUntilRoundStarts();
 	document.body.append(divCountdown);
 	
 	document.body.append(document.createElement("br"));
@@ -59,6 +60,7 @@
 	setInterval(()=>{
 		divCountdown.innerHTML = getStrTimeUntilRoundStarts();
 	}, 1000);
+	
 </script>
 
 </body>
