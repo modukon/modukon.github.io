@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<head>
+</head>
+
+<body>
+
+<script>
+
+	const startTimeMs = 1641067200000;
+	
+	function formatDuration(durationMs) {
+		if (durationMs < 0) return '';
+		const hours = Math.floor(durationMs / 1000 / 60 / 60);
+		const minutes = Math.floor((durationMs - hours * 60 * 60 * 1000) / 1000 / 60);
+		const seconds = Math.floor((durationMs - hours * 60 * 60 * 1000 - minutes * 60 * 1000) / 1000);
+		return (
+			timestampSection(hours) + ':' + timestampSection(minutes) + ':' + timestampSection(seconds)
+		);
+	}
+	
+	function timestampSection(value) {
+		return value.toString().padStart(2, '0');
+	}
+	
+	function getStrTimeUntilRoundStarts() {
+		const timeUntilEnd = startTimeMs - new Date().getTime();
+		if (timeUntilEnd <= 0) return "00:00";
+		else return formatDuration(timeUntilEnd);
+	}
+
+	document.body.style.backgroundColor = "#000";
+	document.body.style.color = "#FFF";
+	document.body.style.textAlign = "center";
+	
+	document.body.append(document.createElement("br"));
+	document.body.append(document.createElement("br"));
+	document.body.append(document.createElement("br"));
+	document.body.append(document.createElement("br"));
+	
+	let divRoundStartsIn = document.createElement("div");
+	divRoundStartsIn.style.fontSize = "60px";
+	divRoundStartsIn.innerHTML = "Round starts in";
+	document.body.append(divRoundStartsIn);
+	
+	document.body.append(document.createElement("br"));
+	
+	let divCountdown = document.createElement("div");
+	divCountdown.style.fontSize = "100px";
+	document.body.append(divCountdown);
+	
+	document.body.append(document.createElement("br"));
+	
+	let divTimestamp = document.createElement("div");
+	divTimestamp.style.fontSize = "30px";
+	divTimestamp.innerHTML = new Date(startTimeMs).toString();
+	document.body.append(divTimestamp);
+	
+	setInterval(()=>{
+		divCountdown.innerHTML = getStrTimeUntilRoundStarts();
+	}, 1000);
+</script>
+
+</body>
+
+</html>
